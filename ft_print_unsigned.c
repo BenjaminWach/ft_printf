@@ -6,12 +6,11 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:14:43 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 14:24:13 by bwach            ###   ########.fr       */
+/*   Updated: 2023/11/02 17:10:54 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include "libft.h"
+#include "ft_printf.h"
 
 static int	ft_unsigned_len(unsigned int nbr)
 {
@@ -35,10 +34,10 @@ static char	*ft_small_itoa(unsigned int nbr)
 	num = malloc(sizeof(char) * (len + 1));
 	if (!num)
 		return (NULL);
-	while (n)
+	while (num)
 	{
-		num[len - 1] = n % 10 + '0';
-		n /= 10;
+		num[len - 1] = (num % 10) + '0';
+		num /= 10;
 		len--;
 	}
 	return (num);

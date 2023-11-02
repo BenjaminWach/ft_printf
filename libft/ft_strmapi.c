@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 10:32:06 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 14:27:39 by bwach            ###   ########.fr       */
+/*   Created: 2023/10/25 21:53:41 by bwach             #+#    #+#             */
+/*   Updated: 2023/10/25 21:58:54 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
-# include <stdarg.h>
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	unsigned int	i;
+	char			*str;
 
-int		ft_printf(const char *str, ...);
-int		ft_print_hex(unsigned int nbr);
-int		ft_print_percent(void);
-int		ft_print_unsigned(unsigned int nbr);
-void	ft_putstr(char *str);
-int		ft_printstr(char *str);
-int		ft_print_percent(void);
-
-#endif
+	i = 0;
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (str == NULL)
+		return (NULL);
+	while (s[i])
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

@@ -6,7 +6,7 @@
 #    By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 14:28:20 by bwach             #+#    #+#              #
-#    Updated: 2023/11/02 14:37:17 by bwach            ###   ########.fr        #
+#    Updated: 2023/11/02 16:52:37 by bwach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,37 +14,34 @@ NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
-LIBFT = libft
-LDFLAGS = -Llibft
-LDLIBS = -lft
+LIBFT_DIR = libft
 
-SRC =  printf.h ft_printf.c ft_print_hex.c ft_print_unsigned.c ft_print_utils.c \
-	
-	
-OBJ = $(SRC:.c=.o)
+SRC_FILES = ft_printf.c ft_print_hex.c ft_print_unsigned.c ft_print_utils.c ft_print_ptr.c\
 
-$(NAME): $(OBJ)
-	@make -C ${LIBFT}
-	@cp ${LIBFT}/libft.a ${NAME}
-	@mv libft.a $(NAME)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
-
-%.o : %.c
-	$(CC) $(CFLAGS) -g -I . -c $< -o $(<:.c=.o) 
+OBJ = $(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
-clean:
-	$(RM) $(OBJ) $(BONUSOBJ)
+$(NAME): $(OBJ)
+	@make -C $(LIBFT_DIR)
+	@cp ${LIBFT_DIR}/libft.a .
+	@mv libft.a $(NAME)
+	ar rcs $(NAME) $(OBJ)
+	@echo "Compilation done"
 
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(LIBFT_DIR)
+	
+clean: 
+	$(RM) $(OBJ)
+	@make clean -C ${LIBFT_DIR}
+	@echo "Clean done"
+	
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(LIBFT_DIR)/libft.a
+	@echo "Fclean done"
 
 re: fclean all
-
-bonus : $(OBJ) 
-		ar rc $(NAME) $(OBJ)
-		ranlib $(NAME)
 
 .PHONY: clean fclean re

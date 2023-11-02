@@ -1,49 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 13:51:12 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 16:57:28 by bwach            ###   ########.fr       */
+/*   Created: 2023/10/26 13:58:30 by bwach             #+#    #+#             */
+/*   Updated: 2023/10/30 00:07:05 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_putstr(char *str)
+int	ft_lstsize(t_list *lst)
 {
-	int	i;
+	int		i;
+	t_list	*tmp;
 
 	i = 0;
-	while (str[i])
-		ft_putchar(str[i++]);
-}
-
-int	ft_printstr(char *str)
-{
-	if (!str)
-		ft_putstr("(null)");
-	else
-		ft_putstr(str);
-	return (ft_strlen(str));
-}
-
-int	ft_printnbr(int n)
-{
-	int		len;
-	char	*num;
-
-	len = 0;
-	num = ft_itoa(n);
-	len = ft_printstr(num);
-	free(num);
-	return (len);
-}
-
-int	ft_print_percent(void)
-{
-	ft_putchar('%');
-	return (1);
+	tmp = lst;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
 }

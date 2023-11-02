@@ -1,49 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 13:51:12 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 16:57:28 by bwach            ###   ########.fr       */
+/*   Created: 2023/10/24 11:56:56 by bwach             #+#    #+#             */
+/*   Updated: 2023/10/31 11:46:24 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_putstr(char *str)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (str[i])
-		ft_putchar(str[i++]);
-}
-
-int	ft_printstr(char *str)
-{
-	if (!str)
-		ft_putstr("(null)");
-	else
-		ft_putstr(str);
-	return (ft_strlen(str));
-}
-
-int	ft_printnbr(int n)
-{
-	int		len;
-	char	*num;
-
-	len = 0;
-	num = ft_itoa(n);
-	len = ft_printstr(num);
-	free(num);
-	return (len);
-}
-
-int	ft_print_percent(void)
-{
-	ft_putchar('%');
-	return (1);
+	while (i + 1 < dstsize && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	if (i < dstsize)
+		dst[i] = '\0';
+	else if (dstsize > 0)
+		dst[dstsize -1] = '\0';
+	while (src[i])
+		i++;
+	return (i);
 }

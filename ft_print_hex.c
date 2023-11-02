@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 14:03:19 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 14:26:19 by bwach            ###   ########.fr       */
+/*   Created: 2023/11/02 15:07:14 by bwach             #+#    #+#             */
+/*   Updated: 2023/11/02 17:08:54 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include "libft.h"
+#include "ft_printf.h"
 
-static int	ft_hex_len(unsigned int nbr, const char conversion)
+static int	ft_hex_len(unsigned int nbr)
 {
 	int	len;
 
@@ -53,5 +52,5 @@ int	ft_print_hex(unsigned int nbr, const char conversion)
 		return (ft_putchar('0'));
 	else
 		ft_put_hex(nbr, conversion);
-	return (ft_hexlen(nbr));
+	return (ft_hex_len(nbr));
 }

@@ -6,12 +6,11 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:29:50 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 15:03:10 by bwach            ###   ########.fr       */
+/*   Updated: 2023/11/02 17:04:12 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include "libft.h"
+#include "ft_printf.h"
 
 static int	ft_ptr_len(unsigned long long ptr)
 {
@@ -30,8 +29,8 @@ void	ft_putptr(unsigned long long num)
 {
 	if (num > 16)
 	{
-		ft_putptr(ptr / 16);
-		ft_putptr(ptr % 16);
+		ft_putptr(num / 16);
+		ft_putptr(num % 16);
 	}
 	else
 	{

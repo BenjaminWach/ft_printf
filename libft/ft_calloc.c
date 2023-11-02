@@ -1,49 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 13:51:12 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 16:57:28 by bwach            ###   ########.fr       */
+/*   Created: 2023/10/26 10:49:26 by bwach             #+#    #+#             */
+/*   Updated: 2023/10/31 10:58:52 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_putstr(char *str)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int	i;
+	size_t	n;
+	void	*s;
 
-	i = 0;
-	while (str[i])
-		ft_putchar(str[i++]);
-}
-
-int	ft_printstr(char *str)
-{
-	if (!str)
-		ft_putstr("(null)");
+	n = count * size;
+	s = malloc(n);
+	if (!s)
+		return (NULL);
 	else
-		ft_putstr(str);
-	return (ft_strlen(str));
-}
-
-int	ft_printnbr(int n)
-{
-	int		len;
-	char	*num;
-
-	len = 0;
-	num = ft_itoa(n);
-	len = ft_printstr(num);
-	free(num);
-	return (len);
-}
-
-int	ft_print_percent(void)
-{
-	ft_putchar('%');
-	return (1);
+		ft_bzero(s, n);
+	return (s);
 }

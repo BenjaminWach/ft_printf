@@ -1,49 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 13:51:12 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 16:57:28 by bwach            ###   ########.fr       */
+/*   Created: 2023/10/24 11:18:18 by bwach             #+#    #+#             */
+/*   Updated: 2023/10/28 14:10:29 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_putstr(char *str)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int	i;
+	size_t			i;
+	char			*temp1;
+	char			*temp2;
 
 	i = 0;
-	while (str[i])
-		ft_putchar(str[i++]);
-}
-
-int	ft_printstr(char *str)
-{
-	if (!str)
-		ft_putstr("(null)");
-	else
-		ft_putstr(str);
-	return (ft_strlen(str));
-}
-
-int	ft_printnbr(int n)
-{
-	int		len;
-	char	*num;
-
-	len = 0;
-	num = ft_itoa(n);
-	len = ft_printstr(num);
-	free(num);
-	return (len);
-}
-
-int	ft_print_percent(void)
-{
-	ft_putchar('%');
-	return (1);
+	temp1 = (char *)src;
+	temp2 = (char *)dest;
+	if (!src && !dest)
+		return (dest);
+	while (i < n)
+	{
+		temp2[i] = temp1[i];
+		i++;
+	}
+	return (dest);
 }
