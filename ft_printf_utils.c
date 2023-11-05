@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 13:51:12 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 16:57:28 by bwach            ###   ########.fr       */
+/*   Updated: 2023/11/05 22:25:03 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	ft_putstr(char *str)
 int	ft_printstr(char *str)
 {
 	if (!str)
+	{
 		ft_putstr("(null)");
+		return (6);
+	}
 	else
 		ft_putstr(str);
 	return (ft_strlen(str));

@@ -6,13 +6,13 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:34:13 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 17:09:26 by bwach            ###   ########.fr       */
+/*   Updated: 2023/11/05 22:18:16 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(int c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
@@ -52,7 +52,7 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-			print_length += ft_conversion(args, str[i++ + 1]);
+			print_length += ft_conversion(args, str[++i]);
 		else
 			print_length += ft_putchar(str[i]);
 		i++;

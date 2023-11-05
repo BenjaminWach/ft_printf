@@ -6,7 +6,7 @@
 #    By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 14:28:20 by bwach             #+#    #+#              #
-#    Updated: 2023/11/02 16:52:37 by bwach            ###   ########.fr        #
+#    Updated: 2023/11/05 13:31:25 by bwach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 LIBFT_DIR = libft
 
-SRC_FILES = ft_printf.c ft_print_hex.c ft_print_unsigned.c ft_print_utils.c ft_print_ptr.c\
+SRC_FILES = ft_printf.c ft_print_hex.c ft_print_unsigned.c ft_printf_utils.c ft_print_ptr.c\
 
 OBJ = $(SRC_FILES:.c=.o)
 

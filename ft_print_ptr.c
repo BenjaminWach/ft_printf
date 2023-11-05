@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:29:50 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 17:04:12 by bwach            ###   ########.fr       */
+/*   Updated: 2023/11/05 19:36:18 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_ptr_len(unsigned long long ptr)
 	int	len;
 
 	len = 0;
-	while (!ptr)
+	while (ptr)
 	{
 		len++;
 		ptr /= 16;
@@ -46,13 +46,13 @@ int	ft_print_ptr(unsigned long long ptr)
 	int	print_len;
 
 	print_len = 0;
-	print_len += ft_putstr("0x");
+	print_len += write(1, "0x", 2);
 	if (!print_len)
 		return (ft_putchar('0'));
 	else
 	{
 		ft_putptr(ptr);
-		print_len += ft_ptrlen(ptr);
+		print_len += ft_ptr_len(ptr);
 	}
 	return (print_len);
 }

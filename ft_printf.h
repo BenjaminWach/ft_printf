@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:09:24 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 17:09:45 by bwach            ###   ########.fr       */
+/*   Updated: 2023/11/05 13:53:46 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdarg.h>
 
 int		ft_printf(const char *str, ...);
-int		ft_putchar(int c);
+int		ft_putchar(char c);
 int		ft_print_hex(unsigned int nbr, const char conversion);
 int		ft_print_ptr(unsigned long long ptr);
 int		ft_print_percent(void);

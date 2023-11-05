@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:07:14 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/02 17:08:54 by bwach            ###   ########.fr       */
+/*   Updated: 2023/11/05 13:59:50 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_hex_len(unsigned int nbr)
 	int	len;
 
 	len = 0;
-	while (!nbr)
+	while (nbr)
 	{
 		len++;
 		nbr /= 16;
