@@ -6,13 +6,13 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:29:50 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/05 19:36:18 by bwach            ###   ########.fr       */
+/*   Updated: 2023/11/06 09:35:42 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_ptr_len(unsigned long long ptr)
+static int	ft_ptr_len(uintptr_t ptr)
 {
 	int	len;
 
@@ -25,16 +25,16 @@ static int	ft_ptr_len(unsigned long long ptr)
 	return (len);
 }
 
-void	ft_putptr(unsigned long long num)
+static void	ft_putptr(unsigned long long num)
 {
-	if (num > 16)
+	if (num >= 16)
 	{
 		ft_putptr(num / 16);
 		ft_putptr(num % 16);
 	}
 	else
 	{
-		if (num < 10)
+		if (num <= 9)
 			ft_putchar_fd((num + '0'), 1);
 		else
 			ft_putchar_fd((num - 10 + 'a'), 1);
@@ -47,8 +47,8 @@ int	ft_print_ptr(unsigned long long ptr)
 
 	print_len = 0;
 	print_len += write(1, "0x", 2);
-	if (!print_len)
-		return (ft_putchar('0'));
+	if (ptr == 0)
+		print_len += write(1, "0", 1);
 	else
 	{
 		ft_putptr(ptr);

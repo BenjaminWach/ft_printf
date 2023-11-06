@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:07:14 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/05 13:59:50 by bwach            ###   ########.fr       */
+/*   Updated: 2023/11/06 10:08:45 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	ft_hex_len(unsigned int nbr)
 
 static void	ft_put_hex(unsigned int nbr, const char conversion)
 {
-	if (nbr > 16)
+	if (nbr >= 16)
 	{
 		ft_put_hex(nbr / 16, conversion);
 		ft_put_hex(nbr % 16, conversion);

@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:14:43 by bwach             #+#    #+#             */
-/*   Updated: 2023/11/05 14:00:13 by bwach            ###   ########.fr       */
+/*   Updated: 2023/11/06 09:33:16 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static char	*ft_small_itoa(unsigned int nbr)
 	num = malloc(sizeof(char) * (len + 1));
 	if (!num)
 		return (NULL);
-	while (num)
+	num[len] = '\0';
+	while (nbr)
 	{
 		num[len - 1] = (nbr % 10) + '0';
 		nbr /= 10;
